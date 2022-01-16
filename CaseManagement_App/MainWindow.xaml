@@ -1,0 +1,114 @@
+﻿<Window x:Class="CaseManagement_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaseManagement_App"
+        mc:Ignorable="d"
+        FontFamily="Gotham Medium"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        Title="Case Manager" Height="550" Width="800">
+
+    <Grid>
+        <Rectangle>
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#97B4C5" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Text="&#xEC50;" Foreground="black" FontSize="24" Margin="20 0 0 5" FontWeight="ExtraLight" />
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="1" FontFamily="Gotham Medium" Text="Case" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" Foreground="Black" FontWeight="Bold" Margin="40 0 0 0" />
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Gotham Medium" Text="Manager" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" Foreground="Black" Margin="57 0 0 0" FontWeight="Light"/>
+            
+            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Background="Transparent" Margin="-1" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="#FFC94B" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Register customer" FontWeight="Medium" Margin="15 70 0 5" />
+                    <RadioButton Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Create case" FontWeight="Medium" Margin="15 8 0 5" />
+                    <RadioButton Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show customers" FontWeight="SemiBold" Margin="15 8 0 5" />
+                    <RadioButton Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show cases" FontWeight="Medium" Margin="15 8 0 5" />
+                    <RadioButton Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Search for customer" FontWeight="Medium" Margin="15 8 0 5"/>
+                    <RadioButton Grid.Row="6" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Search for case" FontWeight="Medium" Margin="15 8 0 5" />
+
+
+                </Grid>
+                
+            </StackPanel>
+            <Border BorderBrush="Transparent" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10 10 10 10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#97B4C5"/>
+                </Border.Effect>
+                <Rectangle Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10 10 10 10">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#d6cadd" />
+                    </Rectangle.Fill>
+                    <Rectangle.LayoutTransform>
+                        <RotateTransform Angle="10"/>
+                    </Rectangle.LayoutTransform>
+                </Rectangle>
+            </Border>
+
+            <Border BorderBrush="Transparent" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10 10 10 10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#97B4C5"/>
+                </Border.Effect>
+                <Rectangle Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10 10 10 10">
+                    <Rectangle.Fill>
+                        <SolidColorBrush Color="#FFC94B" />
+                    </Rectangle.Fill>
+                    <Rectangle.LayoutTransform>
+                        <RotateTransform Angle="-14"/>
+                    </Rectangle.LayoutTransform>
+                </Rectangle>
+            </Border>
+            <Border BorderBrush="Transparent" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10 10 10 10">
+                <Border.Effect>
+                    <DropShadowEffect Color="#97B4C5"/>
+                </Border.Effect>
+                <StackPanel Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Background="White" Margin="70" >
+
+                </StackPanel>
+            </Border>
+            
+            
+            
+
+            
+            
+
+        </Grid>
+        
+        
+        
+
+    </Grid>
+</Window>
