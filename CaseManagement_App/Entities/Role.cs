@@ -20,6 +20,6 @@ namespace CaseManagement_App.Entities
 
 
         public virtual ICollection<User>? Users { get; set; } = new List<User>();
-        public virtual ICollection<Admin>? Admin { get; set; } = new List<User>();
+        public virtual ICollection<Admin>? Admin { get; set; } = new List<Admin>();
     }
 }

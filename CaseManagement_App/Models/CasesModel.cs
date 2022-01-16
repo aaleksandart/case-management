@@ -16,4 +16,3 @@ namespace CaseManagement_App.Models
         public virtual AdminModel? Admin { get; set; }
     }
 }
-}
