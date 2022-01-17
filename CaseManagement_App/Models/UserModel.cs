@@ -12,7 +12,6 @@ namespace CaseManagement_App.Models
         public string? LastName { get; set; }
         public virtual RoleModel? Role { get; set; }
         public virtual ContactInfoModel? ContactInfo { get; set; }
-        public int AddressId { get; set; }
         public virtual AddressModel? Address { get; set; }
     }
 }

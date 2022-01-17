@@ -16,10 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Templates\" />
-    <Folder Include="Views\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

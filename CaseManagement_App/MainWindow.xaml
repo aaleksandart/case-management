@@ -4,11 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaseManagement_App"
+        xmlns:viewModel="clr-namespace:CaseManagement_App.Models.ViewModels"
         mc:Ignorable="d"
         FontFamily="Gotham Medium"
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
         Title="Case Manager" Height="550" Width="800">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
 
     <Grid>
         <Rectangle>
@@ -52,11 +57,11 @@
                             <SolidColorBrush Color="#FFC94B" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Register customer" FontWeight="Medium" Margin="15 70 0 5" />
+                    <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Register user" FontWeight="Medium" Margin="15 70 0 5" />
                     <RadioButton Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Create case" FontWeight="Medium" Margin="15 8 0 5" />
-                    <RadioButton Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show customers" FontWeight="SemiBold" Margin="15 8 0 5" />
+                    <RadioButton Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show users" FontWeight="SemiBold" Margin="15 8 0 5" />
                     <RadioButton Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show cases" FontWeight="Medium" Margin="15 8 0 5" />
-                    <RadioButton Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Search for customer" FontWeight="Medium" Margin="15 8 0 5"/>
+                    <RadioButton Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Search for user" FontWeight="Medium" Margin="15 8 0 5"/>
                     <RadioButton Grid.Row="6" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Search for case" FontWeight="Medium" Margin="15 8 0 5" />
 
 

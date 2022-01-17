@@ -19,7 +19,7 @@ namespace CaseManagement_App.Entities
         public string? Email { get; set; }
 
         [Required]
-        public int PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
 
         public virtual IEnumerable<User> Users { get; set; } = new List<User>();

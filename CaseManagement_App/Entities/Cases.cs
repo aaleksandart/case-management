@@ -13,6 +13,7 @@ namespace CaseManagement_App.Entities
         public int Id { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string? Header { get; set; }
 
         [Required]

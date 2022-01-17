@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace CaseManagement_App.Entities
 {
-    [Index(nameof(ContactInfoId), IsUnique = true)]
     internal class User
     {
         [Key]
@@ -25,14 +24,14 @@ namespace CaseManagement_App.Entities
 
         [Required]
         public int RoleId { get; set; }
-        public Role? Role { get; set; }
+        public virtual Role? Role { get; set; }
 
         [Required]
         public int ContactInfoId { get; set; }
-        public ContactInfo? ContactInfo { get; set; }
+        public virtual ContactInfo? ContactInfo { get; set; }
 
         [Required]
         public int AddressId { get; set; }
-        public Address? Address { get; set; }
+        public virtual Address? Address { get; set; }
     }
 }
