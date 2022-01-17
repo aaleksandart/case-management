@@ -19,6 +19,7 @@ namespace CaseManagement_App.Models.ViewModels
             ShowCasesViewModel = new ShowCasesViewModel();
             SearchUserViewModel = new SearchUserViewModel();
             SearchCaseViewModel = new SearchCaseViewModel();
+            //CurrentView = CreateCaseViewModel;
 
             RegUserViewCommand = new RelayCommand(x => CurrentView = RegUserViewModel);
             CreateCaseViewCommand = new RelayCommand(x => CurrentView = CreateCaseViewModel);
