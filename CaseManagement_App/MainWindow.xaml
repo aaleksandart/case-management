@@ -9,7 +9,7 @@
         FontFamily="Gotham Medium"
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
-        Title="Case Manager" Height="550" Width="800">
+        Title="Case Manager" Height="650" Width="950">
 
     <Window.DataContext>
         <viewModel:MainViewModel />

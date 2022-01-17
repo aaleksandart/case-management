@@ -4,9 +4,95 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CaseManagement_App.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="Register new user" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Register User" Padding="12 5 15 0" FontWeight="SemiBold"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="5 10 5 0">
+            <Label Content="Firstname" Margin="4 0"/>
+            <TextBox x:Name="inputFirstName" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="Lastname" Margin="4 0"/>
+            <TextBox x:Name="inputLastName" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="Email" Margin="4 0"/>
+            <TextBox x:Name="inputEmail" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="Phone " Margin="4 0"/>
+            <TextBox x:Name="inputPhoneNumber" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="Streetname" Margin="4 0"/>
+            <TextBox x:Name="inputStreetName" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="Postalcode" Margin="4 0"/>
+            <TextBox x:Name="inputPostalCode" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="City" Margin="4 0"/>
+            <TextBox x:Name="inputCity" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <Label Content="Country" Margin="4 0"/>
+            <TextBox x:Name="inputCountry" Padding="3.5" Margin="8 0">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            
+        </StackPanel>
     </Grid>
 </UserControl>
