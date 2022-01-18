@@ -62,7 +62,7 @@
                     <RadioButton Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show users" FontWeight="SemiBold" Margin="15 8 0 5" Command="{Binding ShowUsersViewCommand}" />
                     <RadioButton Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show cases" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding ShowCasesViewCommand}" />
                     <RadioButton Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Search for case" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding SearchCaseViewCommand}" />
-                    <RadioButton Grid.Row="6" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Gonna delete" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding SearchUsersViewCommand}" />
+                    <RadioButton Grid.Row="6" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Update case" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding UpdateCaseViewCommand}" />
 
 
                 </Grid>

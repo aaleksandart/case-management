@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="DesignTemplates/RadioButtonStyle.xaml" />
+                <ResourceDictionary Source="Templates/RadioButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:RegUserViewModel}">
@@ -34,7 +34,15 @@
             <DataTemplate DataType="{x:Type viewModel:SearchCaseViewModel}">
                 <view:SearchCaseView />
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:UpdateCaseViewModel}">
+                <view:UpdateCaseView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView />
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

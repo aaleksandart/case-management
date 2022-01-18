@@ -19,7 +19,9 @@ namespace CaseManagement_App.Models.ViewModels
             ShowCasesViewModel = new ShowCasesViewModel();
             SearchUserViewModel = new SearchUserViewModel();
             SearchCaseViewModel = new SearchCaseViewModel();
-            //CurrentView = CreateCaseViewModel;
+            UpdateCaseViewModel = new UpdateCaseViewModel();
+            HomeViewModel = new HomeViewModel();
+            CurrentView = HomeViewModel;
 
             RegUserViewCommand = new RelayCommand(x => CurrentView = RegUserViewModel);
             CreateCaseViewCommand = new RelayCommand(x => CurrentView = CreateCaseViewModel);
@@ -27,6 +29,8 @@ namespace CaseManagement_App.Models.ViewModels
             ShowCasesViewCommand = new RelayCommand(x => CurrentView = ShowCasesViewModel);
             SearchUsersViewCommand = new RelayCommand(x => CurrentView = SearchUserViewModel);
             SearchCaseViewCommand = new RelayCommand(x => CurrentView = SearchCaseViewModel);
+            UpdateCaseViewCommand = new RelayCommand(x => CurrentView = UpdateCaseViewModel);
+            HomeViewCommand = new RelayCommand(x => CurrentView = HomeViewModel);
         }
 
         public object CurrentView
@@ -56,5 +60,11 @@ namespace CaseManagement_App.Models.ViewModels
 
         public RelayCommand SearchCaseViewCommand { get; set; }
         public SearchCaseViewModel SearchCaseViewModel { get; set; }
+
+        public RelayCommand UpdateCaseViewCommand { get; set; }
+        public UpdateCaseViewModel UpdateCaseViewModel { get; set; }
+
+        public RelayCommand HomeViewCommand { get; set; }
+        public HomeViewModel HomeViewModel { get; set; }
     }
 }
