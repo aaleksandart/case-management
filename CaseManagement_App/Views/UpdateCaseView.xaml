@@ -18,51 +18,26 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Select case to update" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
 
-        <Border Grid.Row="1" Grid.Column="0" BorderBrush="#97B4C5" BorderThickness="2" Margin="8">
-            <ScrollViewer Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="380">
-                <StackPanel>
-                    <StackPanel.Resources>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="380" Margin="8">
+            <StackPanel>
+                <ListView Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
+                    <ListView.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
-                    </StackPanel.Resources>
-                    <ListView Padding="10">
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                        <TextBlock Text="Hello" />
-                    </ListView>
-                </StackPanel>
-            </ScrollViewer>
-        </Border>
+                    </ListView.Resources>
+                    <TextBlock Text="Hello" />
+                    
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Update case" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5 10 5 0">
-            <Label Content="Header" Margin="4 2 0 -3"/>
-            <TextBox x:Name="inputHeader" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
+            <Label Content="Update header" Margin="4 2 0 -3"/>
+            <TextBox x:Name="UpdateHeader" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -70,8 +45,8 @@
                 </TextBox.Resources>
             </TextBox>
 
-            <Label Content="Description" Margin="4 2 0 -3"/>
-            <TextBox x:Name="inputDescription" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">
+            <Label Content="Update description" Margin="4 2 0 -3"/>
+            <TextBox x:Name="UpdateDescription" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5" />
@@ -79,25 +54,18 @@
                 </TextBox.Resources>
             </TextBox>
 
-            <TextBlock Text="Add admin to the case" Margin="0 30 0 8" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
-
-            <Label Content="Firstname" Margin="4 2 0 -3"/>
-            <TextBox x:Name="inputAdminFirstName" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
-                <TextBox.Resources>
+            <Label Content="Update Case state" Margin="4 2 0 -3"/>
+            <ListView Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
+                <ListView.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
-                </TextBox.Resources>
-            </TextBox>
-
-            <Label Content="Lastname" Margin="4 2 0 -3"/>
-            <TextBox x:Name="inputAdminLastName" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
+                </ListView.Resources>
+                <ListViewItem Content="Idling" />
+                <ListViewItem Content="In-progress" />
+                <ListViewItem Content="Pending" />
+                <ListViewItem Content="Closed" />
+            </ListView>
         </StackPanel>      
     </Grid>
 </UserControl>
