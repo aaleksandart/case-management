@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaseManagement_App.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20220116161916_updated Cases")]
-    partial class updatedCases
+    [Migration("20220120083516_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

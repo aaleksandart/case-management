@@ -12,13 +12,52 @@
         <ScrollViewer Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="380" Margin="10 30">
             <StackPanel>
 
-                <ListView Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
+                <ListView x:Name="lvGetCases" Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
                     <ListView.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </ListView.Resources>
-                    <TextBlock Text="Hello" />
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="2" Padding="5" Margin="0 2 0 5" BorderBrush="LightGray">
+                                <Border.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Border.Resources>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="0.4*" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Case id:" Margin="0 0 0 5" FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="-12 0 0 5" Text="{Binding Id}" />
+                                    <TextBlock Grid.Row="0" Grid.Column="2" Margin="20 0 5 0" Text="Header:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 5 0" Text="{Binding Header}" />
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0 0 5 0" Text="Description:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Descriptions}" />
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="User id: " Margin="0 0 0 5" FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="-12 0 0 0" Text="{Binding User.Id}" />
+                                    <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="0 0 2 0" Text="{Binding User.FirstName}" />
+                                    <TextBlock Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Margin="-10 0 0 0" Text="{Binding User.LastName}" />
+                                    <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding User.ContactInfo.Email}" />
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Casestate: " FontSize="13" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="3" Grid.Column="3" HorizontalAlignment="Right" Text="{Binding CaseState.Name}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                     
                 </ListView>
             </StackPanel>

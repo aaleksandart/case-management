@@ -92,7 +92,20 @@
             </TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            
+            <Button x:Name="btnRegisterUser" Content="Register" Background="#d6cadd" BorderBrush="Transparent" FontWeight="Medium"  Padding="10" Margin="10 30" Click="btnRegisterUser_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <TextBox x:Name="tbStatusMessage" Margin="10 20" Padding="2" Height="50" BorderBrush="#d6cadd" BorderThickness="2">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
         </StackPanel>
     </Grid>
 </UserControl>

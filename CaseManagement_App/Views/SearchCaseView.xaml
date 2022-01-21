@@ -9,7 +9,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300" />
@@ -18,35 +19,101 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Select case for details" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
 
-        <ScrollViewer Grid.Row="1" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="380" Margin="8">
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="380" Margin="8 24 8 8">
             <StackPanel>
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </StackPanel.Resources>
-                <ListView Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
+                <ListView x:Name="lvCaseChoice" Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
                     <ListView.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </ListView.Resources>
-                    <TextBlock Text="Hello" />
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="2" Padding="5" Margin="0 2 0 5" BorderBrush="LightGray">
+                                <Border.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Border.Resources>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 0 0 5" Text="{Binding Id}" />
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Text="{Binding ContactInfo.Email}" />
+                                    <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0 0 5 0" Text="{Binding FirstName}" />
+                                    <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding LastName}" />
+                                    
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </ScrollViewer>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Case details" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
 
-
-        <ScrollViewer Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="380" Margin="8">
-            <TextBox Text="Hello" Grid.Row="1" Grid.Column="1" IsReadOnly="True" Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
-                <TextBox.Resources>
+        <ScrollViewer Grid.Row="1" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="300" VerticalAlignment="Top" Margin="8 24 8 0">
+            <StackPanel>
+                <StackPanel.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
-                </TextBox.Resources>
-            </TextBox>
+                </StackPanel.Resources>
+                <ListView x:Name="lvCaseDetails" Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="300">
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="2" Padding="5" Margin="0 2 0 5" BorderBrush="LightGray">
+                                <Border.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Border.Resources>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="15" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 0 0 5" Text="{Binding Id}" />
+                                    <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="0 0 5 0" Text="{Binding FirstName}" />
+                                    <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Text="{Binding LastName}" />
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Text="{Binding ContactInfo.Email}" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
         </ScrollViewer>
+        <Button x:Name="btnSeeDetails" Grid.Row="2" Grid.Column="1" Content="See details" Background="#d6cadd" BorderBrush="Transparent" VerticalAlignment="Top" FontWeight="Medium"  Padding="10" Margin="10 40">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </UserControl>

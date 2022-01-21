@@ -61,9 +61,7 @@
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </ListView.Resources>
-                <ListViewItem Content="Idling" />
                 <ListViewItem Content="In-progress" />
-                <ListViewItem Content="Pending" />
                 <ListViewItem Content="Closed" />
             </ListView>
         </StackPanel>      

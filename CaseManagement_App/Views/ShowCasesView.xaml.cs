@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CaseManagement_App.Entities;
+using CaseManagement_App.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,22 @@ namespace CaseManagement_App.Views
     /// </summary>
     public partial class ShowCasesView : UserControl
     {
+        private IEnumerable<Cases> _caseList = null!;
+        private ICaseService userService = new CaseService();
+
         public ShowCasesView()
         {
             InitializeComponent();
+            GetCases();
+        }
+
+        private void GetCases()
+        {
+            _caseList = userService.GetAllCases();
+            foreach (var c in _caseList)
+            {
+                lvGetCases.Items.Add(c);
+            }
         }
     }
 }

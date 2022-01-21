@@ -19,8 +19,11 @@ namespace CaseManagement_App.Services
         int CreateRole(RoleModel role);
 
 
+        User GetUser(int id);
         IEnumerable<User> GetAllUsers();
+        IEnumerable<Admin> GetAllAdmins();
         IEnumerable<User> GetLatest();
+        Admin GetAdmin(int id);
     }
     internal class UserService : IUserService
     {
@@ -101,13 +104,14 @@ namespace CaseManagement_App.Services
 
         public int CreateAdmin(AdminModel admin)
         {
-            var _duplicateAdmin = _context.Admins.Where(x => x.FirstName == admin.LastName).FirstOrDefault();
+            var _duplicateAdmin = _context.Admins.Where(x => x.FirstName == admin.FirstName).FirstOrDefault();
             if (_duplicateAdmin == null)
             {
                 var _admin = new Admin
                 {
                     FirstName = admin.FirstName,
-                    LastName= admin.LastName
+                    LastName= admin.LastName,
+                    RoleId = CreateRole(admin.Role)
                 };
 
                 _context.Admins.Add(_admin);
@@ -140,6 +144,21 @@ namespace CaseManagement_App.Services
                 return _userList;
             }
             return _userList;
+        }
+
+        public User GetUser(int id)
+        {
+            return _context.Users.Find(id);
+        }
+
+        public Admin GetAdmin(int id)
+        {
+            return _context.Admins.Find(id);
+        }
+
+        public IEnumerable<Admin> GetAllAdmins()
+        {
+            return _context.Admins.Include(x => x.Role);
         }
         #endregion
 

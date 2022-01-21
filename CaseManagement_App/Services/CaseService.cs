@@ -30,7 +30,7 @@ namespace CaseManagement_App.Services
         #region CREATE
         public int CreateCase(CasesModel c)
         {
-            var _duplicateCase = _context.Cases.Where(x => x.User.ContactInfo.Email == c.User.ContactInfo.Email).FirstOrDefault();
+            var _duplicateCase = _context.Cases.Where(x => x.Header == c.Header).FirstOrDefault();
             if (_duplicateCase == null)
             {
                 var _case = new Cases
@@ -38,7 +38,10 @@ namespace CaseManagement_App.Services
                     Header = c.Header,
                     Descriptions = c.Descriptions,
                     CreatedDate = c.CreatedDate,
-                    UserId = userService.CreateUser(c.User) 
+                    UserId = userService.GetUser(c.User.Id).Id,
+                    AdminId = userService.CreateAdmin(c.Admin),
+                    CaseStateId = 1,
+                    UpdatedDate = DateTime.Now
                 };
 
                 _context.Cases.Add(_case);
@@ -67,7 +70,7 @@ namespace CaseManagement_App.Services
         #region GET
         public IEnumerable<Cases> GetAllCases()
         {
-            return _context.Cases.Include(x => x.CaseState).Include(x => x.User).Include(x => x.Admin).ToList();
+            return _context.Cases.Include(x => x.CaseState).Include(x => x.User).ThenInclude(x => x.ContactInfo).Include(x => x.Admin).ToList();
         }
 
         public Cases GetCase(int id)
