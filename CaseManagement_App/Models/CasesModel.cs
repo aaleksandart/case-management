@@ -14,6 +14,6 @@ namespace CaseManagement_App.Models
         public DateTime CreatedDate { get; set; }
         public virtual User? User { get; set; }
         public virtual CaseStateModel? CaseState { get; set; }
-        public virtual AdminModel? Admin { get; set; } = new AdminModel { FirstName = "default", LastName = "default"};
+        public virtual AdminModel? Admin { get; set; } = new AdminModel { FirstName = "Unknown", LastName = "Unknown"};
     }
 }

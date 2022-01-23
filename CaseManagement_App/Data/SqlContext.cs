@@ -12,7 +12,6 @@ namespace CaseManagement_App.Data
     {
         public SqlContext()
         {
-
         }
         public SqlContext(DbContextOptions<SqlContext> options) : base(options)
         {

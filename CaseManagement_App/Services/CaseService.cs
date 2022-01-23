@@ -94,12 +94,12 @@ namespace CaseManagement_App.Services
             }
             if (_context.CaseStates.Find(2) == null)
             {
-                CaseState _caseStateIn = new CaseState { Name = "Created" };
+                CaseState _caseStateIn = new CaseState { Name = "In-progress" };
                 _context.CaseStates.Add(_caseStateIn);
             }
             if (_context.CaseStates.Find(3) == null)
             {
-                CaseState _caseStateCl = new CaseState { Name = "Created" };
+                CaseState _caseStateCl = new CaseState { Name = "Closed" };
                 _context.CaseStates.Add(_caseStateCl);
             }
             if (_context.Roles.Find(1) == null)
@@ -148,7 +148,7 @@ namespace CaseManagement_App.Services
             List<Cases> _lastCasesList = new();
             List<Cases> _caseList = (List<Cases>)GetAllCases();
             _caseList.Reverse();
-            if(_caseList.Count < 10 && _caseList.Count != 0)
+            if(_caseList.Count > 10 && _caseList.Count != 0)
             {
                 for (int i = 0; i < 10; i++)
                 {
