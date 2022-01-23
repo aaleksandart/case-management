@@ -63,7 +63,7 @@
             <Border.Effect>
                 <DropShadowEffect Color="#FFC94B"/>
             </Border.Effect>
-            <TextBox x:Name="tbCreated" Background="#FFC94B" BorderBrush="Transparent" TextAlignment="Center" FontWeight="Medium" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
+            <TextBox x:Name="tbCreated" IsReadOnly="True" Background="#FFC94B" BorderBrush="Transparent" TextAlignment="Center" FontWeight="Medium" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -76,7 +76,7 @@
             <Border.Effect>
                 <DropShadowEffect Color="#97B4C5"/>
             </Border.Effect>
-            <TextBox x:Name="tbInProgress" Grid.Row="2" Grid.Column="1" TextAlignment="Center" FontWeight="Medium" Background="#97B4C5" BorderBrush="Transparent" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
+            <TextBox x:Name="tbInProgress" IsReadOnly="True" Grid.Row="2" Grid.Column="1" TextAlignment="Center" FontWeight="Medium" Background="#97B4C5" BorderBrush="Transparent" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
@@ -89,7 +89,7 @@
             <Border.Effect>
                 <DropShadowEffect Color="#d6cadd"/>
             </Border.Effect>
-            <TextBox x:Name="tbClosed" Background="#d6cadd" TextAlignment="Center" FontWeight="Medium" BorderBrush="Transparent" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
+            <TextBox x:Name="tbClosed" IsReadOnly="True" Background="#d6cadd" TextAlignment="Center" FontWeight="Medium" BorderBrush="Transparent" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="5"/>
