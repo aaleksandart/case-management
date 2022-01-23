@@ -65,11 +65,13 @@ namespace CaseManagement_App.Views
                     CaseState = new CaseStateModel { Name = "Created"},
                     Admin = new AdminModel { FirstName = inputAdminFirstName.Text, LastName = inputAdminLastName.Text, Role = new RoleModel { Name = "Admin" } }
                 };
-                if (caseService.CreateCase(NewCase) != 0)
+                if (caseService.CreateCase(NewCase) == 0)
                 {
                     Success();
                     tbStatusMessageCase.Text = "Created a new case succesfully.";
                 }
+                else
+                { tbStatusMessageCase.Text = "Something went wrong. \nDo you have a case with\nthe same header already?"; }
             }
             else if (!string.IsNullOrEmpty(inputHeader.Text)
                 && !string.IsNullOrEmpty(inputDescription.Text)
@@ -83,15 +85,18 @@ namespace CaseManagement_App.Views
                     User = userService.GetUser(selectedItemId.Id),
                     CaseState = new CaseStateModel { Name = "Created" }
                 };
-                if (caseService.CreateCase(NewCase) != 0)
+                if (caseService.CreateCase(NewCase) == 0)
                 {
                     Success();
-                    tbStatusMessageCase.Text = "Something went wrong. \nHave you filled both Header and Description. Also you need to mark a user.";
+                    tbStatusMessageCase.Text = "Created a new case succesfully.";
                 }
+                else
+                {   tbStatusMessageCase.Text = "Something went wrong. \nDo you have a case with\nthe same header already?";    }
             }
+            else
+            {   tbStatusMessageCase.Text = "You need to fill at least \n'Header' and 'Description'.\nAlso you need to select a user.";  }
         }
-                
-
+        
         private void Success()
         {
             inputHeader.Text = "";

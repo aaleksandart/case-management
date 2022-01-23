@@ -9,6 +9,7 @@
         FontFamily="Gotham Medium"
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen"
         Title="Case Manager" Height="650" Width="950">
 
     <Window.DataContext>
@@ -31,9 +32,11 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            
             <TextBlock Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Text="&#xEC50;" Foreground="black" FontSize="24" Margin="20 0 0 5" FontWeight="ExtraLight" />
             <TextBlock Grid.Column="0" Grid.ColumnSpan="1" FontFamily="Gotham Medium" Text="Case" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" Foreground="Black" FontWeight="Bold" Margin="40 0 0 0" />
             <TextBlock Grid.Column="0" Grid.ColumnSpan="2" FontFamily="Gotham Medium" Text="Manager" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" Foreground="Black" Margin="57 0 0 0" FontWeight="Light"/>
+        
 
             <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Background="Transparent" Margin="-1" >
                 <Grid>
@@ -51,22 +54,22 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Rectangle>
                         <Rectangle.Fill>
                             <SolidColorBrush Color="#FFC94B" />
                         </Rectangle.Fill>
                     </Rectangle>
-                    <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Register user" FontWeight="Medium" Margin="15 70 0 5" Command="{Binding RegUserViewCommand}" />
-                    <RadioButton Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Create case" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding CreateCaseViewCommand}" />
-                    <RadioButton Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show users" FontWeight="SemiBold" Margin="15 8 0 5" Command="{Binding ShowUsersViewCommand}" />
-                    <RadioButton Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show cases" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding ShowCasesViewCommand}" />
-                    <RadioButton Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Case details" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding SearchCaseViewCommand}" />
-                    <RadioButton Grid.Row="6" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Update case" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding UpdateCaseViewCommand}" />
-
+                    <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Home" FontWeight="Medium" Margin="15 80 0 5" Command="{Binding HomeViewCommand}" />
+                    <RadioButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Register user" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding RegUserViewCommand}" />
+                    <RadioButton Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Create case" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding CreateCaseViewCommand}" />
+                    <RadioButton Grid.Row="4" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show users" FontWeight="SemiBold" Margin="15 8 0 5" Command="{Binding ShowUsersViewCommand}" />
+                    <RadioButton Grid.Row="5" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Show cases" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding ShowCasesViewCommand}" />
+                    <RadioButton Grid.Row="6" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Case details" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding SearchCaseViewCommand}" />
+                    <RadioButton Grid.Row="7" Grid.ColumnSpan="4" Style="{StaticResource RadioButtonStyle}" Content="Update case" FontWeight="Medium" Margin="15 8 0 5" Command="{Binding UpdateCaseViewCommand}" />
 
                 </Grid>
-
             </StackPanel>
             <Border BorderBrush="Transparent" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10 10 10 10">
                 <Border.Effect>
@@ -103,7 +106,6 @@
                     <ContentControl Margin="10" Content="{Binding CurrentView}" />
                 </StackPanel>
             </Border>
-
         </Grid>
     </Grid>
 </Window>

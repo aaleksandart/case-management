@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CaseManagement_App.Entities;
+using CaseManagement_App.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,30 @@ namespace CaseManagement_App.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
+        private ICaseService caseService = new CaseService();
+        private IEnumerable<Cases> _caseList = null!;
+
         public HomeView()
         {
             InitializeComponent();
+            ShowLatest();
+            GetStatistics();
+        }
+
+        private void ShowLatest()
+        {
+            _caseList = caseService.GetLastCases();
+            foreach (var c in _caseList)
+            {
+                lvLastCreatedCases.Items.Add(c);
+            }
+        }
+
+        private void GetStatistics()
+        {
+            tbCreated.Text = $"At the moment we have {caseService.Get_Statistics(1)} cases that are created.";
+            tbInProgress.Text = $"There is {caseService.Get_Statistics(2)} cases in progress.";
+            tbClosed.Text = $"{caseService.Get_Statistics(3)} cases are closed.";
         }
     }
 }

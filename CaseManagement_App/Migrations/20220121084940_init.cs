@@ -143,13 +143,13 @@ namespace CaseManagement_App.Migrations
                         column: x => x.AdminId,
                         principalTable: "Admins",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Cases_CaseStates_CaseStateId",
                         column: x => x.CaseStateId,
                         principalTable: "CaseStates",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Cases_Users_UserId",
                         column: x => x.UserId,

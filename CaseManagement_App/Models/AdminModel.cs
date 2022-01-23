@@ -10,6 +10,6 @@ namespace CaseManagement_App.Models
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        public virtual RoleModel? Role { get; set; }
+        public virtual RoleModel? Role { get; set; } = new RoleModel { Name = "Admin" };
     }
 }

@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Select case to update" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
@@ -21,49 +21,120 @@
 
         <ScrollViewer Grid.Row="1" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="380" Margin="8">
             <StackPanel>
-                <ListView Padding="10" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
+                <ListView x:Name="lvSelectCaseUpdate" Padding="2" BorderBrush="#97B4C5" BorderThickness="2" Height="380">
                     <ListView.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </ListView.Resources>
-                    <TextBlock Text="Hello" />
-                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="2" Padding="5" Margin="0 2 0 5" BorderBrush="LightGray">
+                                <Border.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Border.Resources>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 0 8 0" Text="Case Id:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="0 0 15 5" Text="{Binding Id}" TextWrapping="Wrap" />
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0 0 15 5" Text="Case state:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="0 0 8 0" Text="{Binding CaseState.Name}" />
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0 0 15 5" Text="Header:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="0 0 8 0" Text="{Binding Header}" TextWrapping="Wrap" Width="120" />
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0 0 15 5" Text="Admin:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="0 0 8 0" Text="{Binding Admin.FirstName}" TextWrapping="Wrap"><TextBlock Grid.Row="3" Grid.Column="2" FontWeight="Normal" Margin="5 0 8 0" Text="{Binding Admin.LastName}" TextWrapping="Wrap" /></TextBlock>
+                                    
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="0 0 15 5" Text="Description:" FontWeight="Medium" />
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 0 5 0" HorizontalAlignment="Left" Text="{Binding Descriptions}" TextWrapping="Wrap" Width="200" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </ScrollViewer>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Update case" Padding="12 5 15 0" FontSize="15" FontWeight="SemiBold" />
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5 10 5 0">
-            <Label Content="Update header" Margin="4 2 0 -3"/>
-            <TextBox x:Name="UpdateHeader" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5 10 5 0" Height="400">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Label Content="Update header" Margin="4 2 0 -3"/>
+                    <TextBox x:Name="updateHeader" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
 
-            <Label Content="Update description" Margin="4 2 0 -3"/>
-            <TextBox x:Name="UpdateDescription" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5" />
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
+                <StackPanel Grid.Row="1">
+                    <Label Content="Update description" Margin="4 2 0 -3"/>
+                    <TextBox x:Name="updateDescription" Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5" Height="80" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
 
-            <Label Content="Update Case state" Margin="4 2 0 -3"/>
-            <ListView Padding="3.5" Margin="8 0" BorderThickness="2" BorderBrush="#97B4C5">
-                <ListView.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </ListView.Resources>
-                <ListViewItem Content="In-progress" />
-                <ListViewItem Content="Closed" />
-            </ListView>
-        </StackPanel>      
+                <StackPanel Grid.Row="3">
+                    <Label Content="Choose state" Margin="4 2 0 -3"/>
+                    <ListView x:Name="lvUpdateCaseState" Padding="3.5" Margin="8 0" SelectionMode="Single" BorderThickness="2" BorderBrush="#97B4C5" Height="80">
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </ListView.Resources>
+                        <RadioButton GroupName="One" x:Name="rBtnAddState" Grid.Row="1" Content="{Binding Name}" HorizontalAlignment="Stretch" Margin="7" />
+                        <RadioButton GroupName="One" x:Name="rBtnAddState2" Grid.Row="1" Content="{Binding Name}" HorizontalAlignment="Stretch" Margin="7" />
+                    </ListView>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4">
+                    <TextBox x:Name="processState" Margin="8 20 8 0" Padding="4" Height="40" BorderThickness="2" BorderBrush="#d6cadd" IsReadOnly="True">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+                <Button x:Name="btnUpdateCase" Grid.Row="5" Grid.Column="1" Content="Update case" Background="#d6cadd" BorderBrush="Transparent" VerticalAlignment="Top" FontWeight="Medium"  Padding="10" Margin="10 25" Click="btnUpdateCase_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </StackPanel>    
     </Grid>
 </UserControl>

@@ -7,6 +7,95 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="HELLO" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock Text="Case Manager statistics" FontSize="15" FontWeight="SemiBold" Margin="10 10 0 0"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="320">
+            <TextBlock Text="The 10 last created cases" Margin="10 0 0 5" FontSize="13" FontWeight="Medium"/>
+            <ListView x:Name="lvLastCreatedCases" Padding="15" Height="320" BorderBrush="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="2" Padding="10" Margin="0 2 0 5" BorderBrush="LightGray" Width="500">
+                            <Border.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Border.Resources>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Medium" Text="Header:" Margin="5 0 20 5"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Header}" Margin="5 0 20 5"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" FontWeight="Medium"  Text="Case state:" Margin="5 0 20 0"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CaseState.Name}" Margin="5 0 20 5" />
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="4" Text="{Binding Descriptions}" Margin="5 0 0 10" TextWrapping="Wrap" Width="450"/>
+                                
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <Border Grid.Row="2" Grid.Column="0">
+            <Border.Effect>
+                <DropShadowEffect Color="#FFC94B"/>
+            </Border.Effect>
+            <TextBox x:Name="tbCreated" Background="#FFC94B" BorderBrush="Transparent" TextAlignment="Center" FontWeight="Medium" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="1">
+            <Border.Effect>
+                <DropShadowEffect Color="#97B4C5"/>
+            </Border.Effect>
+            <TextBox x:Name="tbInProgress" Grid.Row="2" Grid.Column="1" TextAlignment="Center" FontWeight="Medium" Background="#97B4C5" BorderBrush="Transparent" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="2">
+            <Border.Effect>
+                <DropShadowEffect Color="#d6cadd"/>
+            </Border.Effect>
+            <TextBox x:Name="tbClosed" Background="#d6cadd" TextAlignment="Center" FontWeight="Medium" BorderBrush="Transparent" Padding="10" Margin="5 5 5 10" TextWrapping="Wrap">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </Border>
     </Grid>
 </UserControl>

@@ -13,14 +13,15 @@ namespace CaseManagement_App.Services
     internal interface ICaseService
     {
         int CreateCase(CasesModel c);
-        void UpdateCase(CasesModel updateCase, int caseId);
+        void UpdateCase(string uHeader, string uDescription, int caseStateId, int caseId);
 
 
         Cases GetCase(int id);
         IEnumerable<Cases> GetAllCases();
-        IEnumerable<Cases> GetLatest();
-
-        IEnumerable<int> Get_Statistics();
+        public IEnumerable<CaseState> GetStates();
+        public CaseState GetState(int id);
+        int Get_Statistics(int id);
+        public IEnumerable<Cases> GetLastCases();
     }
     internal class CaseService : ICaseService
     {
@@ -30,35 +31,52 @@ namespace CaseManagement_App.Services
         #region CREATE
         public int CreateCase(CasesModel c)
         {
-            var _duplicateCase = _context.Cases.Where(x => x.Header == c.Header).FirstOrDefault();
+            var _duplicateCase = _context.Cases.Include(x => x.User).Where(x => x.Header == c.Header && x.User.Id == c.User.Id).FirstOrDefault();
             if (_duplicateCase == null)
             {
-                var _case = new Cases
+                Cases _case;
+                if (c.Admin != null)
                 {
-                    Header = c.Header,
-                    Descriptions = c.Descriptions,
-                    CreatedDate = c.CreatedDate,
-                    UserId = userService.GetUser(c.User.Id).Id,
-                    AdminId = userService.CreateAdmin(c.Admin),
-                    CaseStateId = 1,
-                    UpdatedDate = DateTime.Now
-                };
-
+                    _case = new Cases
+                    {
+                        Header = c.Header,
+                        Descriptions = c.Descriptions,
+                        CreatedDate = c.CreatedDate,
+                        UserId = userService.GetUser(c.User.Id).Id,
+                        AdminId = userService.CreateAdmin(c.Admin),
+                        CaseStateId = 1,
+                        UpdatedDate = DateTime.Now
+                    };
+                }
+                else
+                {
+                    _case = new Cases
+                    {
+                        Header = c.Header,
+                        Descriptions = c.Descriptions,
+                        CreatedDate = c.CreatedDate,
+                        UserId = userService.GetUser(c.User.Id).Id,
+                        CaseStateId = 1,
+                        UpdatedDate = DateTime.Now
+                    };
+                }
                 _context.Cases.Add(_case);
                 _context.SaveChanges();
-                return _case.Id;
+                return 0;
             }
             return _duplicateCase.Id;
         }
 
-        public void UpdateCase(CasesModel updateCase, int caseId)
+        public void UpdateCase(string uHeader, string uDescription, int caseStateId, int caseId)
         {
+            var _updatedCaseState = _context.CaseStates.Find(caseStateId);
             var _case = GetCase(caseId);
             if (_case != null)
             {
-                _case.Header = updateCase.Header;
-                _case.Descriptions = updateCase.Descriptions;
-                _case.CreatedDate = updateCase.CreatedDate;
+                _case.Header = uHeader;
+                _case.Descriptions = uDescription;
+                _case.CaseState = _updatedCaseState;
+                _case.CreatedDate = _case.CreatedDate;
                 _case.UpdatedDate = DateTime.Now;
 
                 _context.Cases.Update(_case);
@@ -75,33 +93,41 @@ namespace CaseManagement_App.Services
 
         public Cases GetCase(int id)
         {
-            return _context.Cases.Find(id);
+            return  _context.Cases.Include(x => x.CaseState).Include(x => x.User).ThenInclude(x => x.ContactInfo).Include(x => x.Admin).Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Cases> GetLatest()
+        public IEnumerable<CaseState> GetStates()
         {
-            var _caseList = _context.Cases.ToList();
-            int caseCount = _caseList.Count;
-            if(caseCount > 0)
+            return _context.CaseStates.ToList();
+        }
+
+        public CaseState GetState(int id)
+        {
+            return _context.CaseStates.Find(id);
+        }
+
+        public int Get_Statistics(int id)
+        {
+            return _context.Cases.Where(x => x.CaseStateId == id).Count();
+        }
+
+        public IEnumerable<Cases> GetLastCases()
+        {
+            List<Cases> _lastCasesList = new();
+            List<Cases> _caseList = (List<Cases>)GetAllCases();
+            _caseList.Reverse();
+            if(_caseList.Count < 10)
             {
-                for (int i = caseCount; i > (caseCount - 10) || i > 0; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    _caseList.Add(_caseList[i]);
+                    _lastCasesList.Add(_caseList[i]);
                 }
+                return _lastCasesList;
+            }
+            else
+            {
                 return _caseList;
-            };
-            return _caseList;
-            
-        }
-
-        public IEnumerable<int> Get_Statistics()
-        {
-            List<int> resultList = new List<int>();
-            var result = _context.Cases.Where(x => x.CaseStateId == 1).Count();
-            var result2 = _context.Cases.Where(x => x.CaseStateId == 2).Count();
-            var result3 = _context.Cases.Where(x => x.CaseStateId == 3).Count();
-            resultList.Add(result + result2 + result3);
-            return resultList;
+            }
         }
         #endregion
     }
