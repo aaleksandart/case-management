@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaseManagement_App.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace CaseManagement_App
     /// </summary>
     public partial class MainWindow : Window
     {
+        ICaseService caseService = new CaseService();
+        IUserService userService = new UserService();
         public MainWindow()
         {
             InitializeComponent();
+            caseService.CreateData();
         }
     }
 }

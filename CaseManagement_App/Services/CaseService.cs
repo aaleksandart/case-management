@@ -14,6 +14,7 @@ namespace CaseManagement_App.Services
     {
         int CreateCase(CasesModel c);
         void UpdateCase(string uHeader, string uDescription, int caseStateId, int caseId);
+        public void CreateData();
 
 
         Cases GetCase(int id);
@@ -83,6 +84,37 @@ namespace CaseManagement_App.Services
                 _context.SaveChanges();
             }
         }
+
+        public void CreateData()
+        {
+            if(_context.CaseStates.Find(1) == null)
+            {
+                CaseState _caseStateCr = new CaseState { Name = "Created" };
+                _context.CaseStates.Add(_caseStateCr);
+            }
+            if (_context.CaseStates.Find(2) == null)
+            {
+                CaseState _caseStateIn = new CaseState { Name = "Created" };
+                _context.CaseStates.Add(_caseStateIn);
+            }
+            if (_context.CaseStates.Find(3) == null)
+            {
+                CaseState _caseStateCl = new CaseState { Name = "Created" };
+                _context.CaseStates.Add(_caseStateCl);
+            }
+            if (_context.Roles.Find(1) == null)
+            {
+                Role _roleU = new Role { Name = "User" };
+                _context.Roles.Add(_roleU);
+            }
+            if (_context.Roles.Find(2) == null)
+            {
+                Role _roleA = new Role { Name = "Admin" };
+                _context.Roles.Add(_roleA);
+            }
+            _context.SaveChanges();
+
+        }
         #endregion
 
         #region GET
@@ -116,7 +148,7 @@ namespace CaseManagement_App.Services
             List<Cases> _lastCasesList = new();
             List<Cases> _caseList = (List<Cases>)GetAllCases();
             _caseList.Reverse();
-            if(_caseList.Count < 10)
+            if(_caseList.Count < 10 && _caseList.Count != 0)
             {
                 for (int i = 0; i < 10; i++)
                 {
