@@ -38,6 +38,7 @@ namespace CaseManagement_App.Views
             CreateCase();
         }
         
+        //GetUsers hämtar med hjälp av UserService alla användare och skriver ut dem
         private void GetUsers()
         {
             _userList = userService.GetAllUsers();
@@ -46,6 +47,9 @@ namespace CaseManagement_App.Views
                 lvSelectUserToCase.Items.Add(_user);
             }
         }
+
+        //CreateCase kontrollerar att användarens input stämmer
+        //Använder sedan CaseService för att skapa Cases
         private void CreateCase()
         {
             var selectedItemId = (User)lvSelectUserToCase.SelectedItem;
@@ -97,6 +101,7 @@ namespace CaseManagement_App.Views
             {   tbStatusMessageCase.Text = "You need to fill at least \n'Header' and 'Description'.\nAlso you need to select a user.";  }
         }
         
+        //Success rensar formuläret
         private void Success()
         {
             inputHeader.Text = "";

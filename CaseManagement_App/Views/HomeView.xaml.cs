@@ -32,6 +32,7 @@ namespace CaseManagement_App.Views
             GetStatistics();
         }
 
+        //ShowLatest använder CaseService för att hämta och skriva ut senaste skapade Cases
         private void ShowLatest()
         {
             _caseList = caseService.GetLastCases();
@@ -41,6 +42,7 @@ namespace CaseManagement_App.Views
             }
         }
 
+        //GetStatistics använder CaseService för att hämta antalet Cases med specifika CaseStates
         private void GetStatistics()
         {
             tbCreated.Text = $"At the moment we have {caseService.Get_Statistics(1)} cases that are created.";

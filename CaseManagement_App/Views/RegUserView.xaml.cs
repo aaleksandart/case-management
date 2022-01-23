@@ -34,6 +34,8 @@ namespace CaseManagement_App.Views
             RegisterUser();   
         }
 
+        //RegisterUser kontrollerar att formuläret är korrekt ifyllt
+        //Den använder sedan UserService för att skapa en ny användare
         private void RegisterUser()
         {
             if (!string.IsNullOrEmpty(inputFirstName.Text)
@@ -55,14 +57,22 @@ namespace CaseManagement_App.Views
                 };
                 if (userService.CreateUser(NewUser) != 0)
                 {
-                    Success();
-                    tbStatusMessage.Text = "Saved new user succesfully.";
+                        tbStatusMessage.Text = "";
+                        Success();
+                        tbStatusMessage.Text = "Saved new user succesfully.";
                 }
                 else
-                {   tbStatusMessage.Text = "There is some problem with your info. Try another email address.";  }
+                {
+                    tbStatusMessage.Text = "This email adress is allready taken.";
+                }
+            }
+            else 
+            {
+                tbStatusMessage.Text = "You must fill out the entire form.";
             }
         }
 
+        //Success rensar formuläret
         private void Success()
         {
             inputFirstName.Text = "";

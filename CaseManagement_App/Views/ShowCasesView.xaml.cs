@@ -23,7 +23,7 @@ namespace CaseManagement_App.Views
     public partial class ShowCasesView : UserControl
     {
         private IEnumerable<Cases> _caseList = null!;
-        private ICaseService userService = new CaseService();
+        private ICaseService caseService = new CaseService();
 
         public ShowCasesView()
         {
@@ -31,9 +31,10 @@ namespace CaseManagement_App.Views
             GetCases();
         }
 
+        //GetCases använder CaseService för att hämta och skriva ut alla Cases
         private void GetCases()
         {
-            _caseList = userService.GetAllCases();
+            _caseList = caseService.GetAllCases();
             foreach (var c in _caseList)
             {
                 lvGetCases.Items.Add(c);

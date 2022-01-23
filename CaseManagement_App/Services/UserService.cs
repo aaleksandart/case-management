@@ -30,6 +30,8 @@ namespace CaseManagement_App.Services
         private readonly SqlContext _context = new();
 
         #region CREATE
+
+        //CreateRole tar in en RoleModel och skapar en Role entitet som den sparar i databasen
         public int CreateRole(RoleModel role)
         {
             var _duplicateRole = _context.Roles.Where(x => x.Name == role.Name).FirstOrDefault();
@@ -43,6 +45,7 @@ namespace CaseManagement_App.Services
             return _duplicateRole.Id;
         }
 
+        //CreateAddress tar in en AddressModel och skapar Address entitet som den sparar i databasen
         public int CreateAddress(AddressModel address)
         {
             var _duplicateAddress = _context.Addresses.Where(x => x.StreetName == address.StreetName && x.PostalCode == address.PostalCode && x.City == address.City && x.Country == address.Country).FirstOrDefault();
@@ -63,6 +66,7 @@ namespace CaseManagement_App.Services
             return _duplicateAddress.Id;
         }
 
+        //CreateContactInfo tar in en ContactInfoModel och skapar en ContactInfo entitet som den sparar i databasen
         public int CreateContactInfo(ContactInfoModel contactInfo)
         {
             var _duplicateContactInfo = _context.ContactInfos.Where(x => x.Email == contactInfo.Email).FirstOrDefault();
@@ -81,6 +85,7 @@ namespace CaseManagement_App.Services
             return _duplicateContactInfo.Id;
         }
 
+        //CreateUser tar in en UserModel och skapar en User entitet som den sparar i databasen
         public int CreateUser(UserModel user)
         {
             var _duplicateUser = _context.Users.Where(x => x.ContactInfo.Email == user.ContactInfo.Email).FirstOrDefault();
@@ -99,9 +104,10 @@ namespace CaseManagement_App.Services
                 _context.SaveChanges();
                 return _user.Id;
             }
-            return _duplicateUser.Id;
+            return 0;
         }
 
+        //CreateAdmin tar in en AdminModel och skapar en Admin entitet som den sparar i databasen
         public int CreateAdmin(AdminModel admin)
         {
             var _duplicateAdmin = _context.Admins.Where(x => x.FirstName == admin.FirstName).FirstOrDefault();
@@ -124,6 +130,8 @@ namespace CaseManagement_App.Services
         #endregion
 
         #region GET
+
+        //GetAllUsers hämtar alla Users från databasen inklusive Address, Role, ContactInfo
         public IEnumerable<User> GetAllUsers()
         {
             return _context.Users.Include(x => x.Address)
@@ -146,16 +154,19 @@ namespace CaseManagement_App.Services
             return _userList;
         }
 
+        //GetUser hämtar enskild User från databasen
         public User GetUser(int id)
         {
             return _context.Users.Find(id);
         }
 
+        //GetAdmin hämtar enskild Admins från databasen
         public Admin GetAdmin(int id)
         {
             return _context.Admins.Find(id);
         }
 
+        //GetAllAdmins hämtar alla Admins från databasen
         public IEnumerable<Admin> GetAllAdmins()
         {
             return _context.Admins.Include(x => x.Role);

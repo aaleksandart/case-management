@@ -36,6 +36,7 @@ namespace CaseManagement_App.Views
             GetCaseDetails();
         }
 
+        //GetAllCases använder CaseService för att hämta och skriva ut alla Cases
         private void GetAllCases()
         {
             _caseList = caseService.GetAllCases();
@@ -45,6 +46,7 @@ namespace CaseManagement_App.Views
             }
         }
 
+        //GetCaseDetails använder CaseService för att hämta detaljerad info om ett specifikt Case
         private void GetCaseDetails()
         {
             var selectedItem = (Cases)lvCaseChoice.SelectedItem;

@@ -30,6 +30,8 @@ namespace CaseManagement_App.Services
         private readonly SqlContext _context = new();
 
         #region CREATE
+
+        //CreateCase tar in en CaseModel och med den infon skapar den en entity och sparar i databasen.
         public int CreateCase(CasesModel c)
         {
             var _duplicateCase = _context.Cases.Include(x => x.User).Where(x => x.Header == c.Header && x.User.Id == c.User.Id).FirstOrDefault();
@@ -68,6 +70,7 @@ namespace CaseManagement_App.Services
             return _duplicateCase.Id;
         }
 
+        //UpdateCase tar in uppdaterad info och uppdaterar databasen med detta.
         public void UpdateCase(string uHeader, string uDescription, int caseStateId, int caseId)
         {
             var _updatedCaseState = _context.CaseStates.Find(caseStateId);
@@ -85,6 +88,7 @@ namespace CaseManagement_App.Services
             }
         }
 
+        //CreateData skapar standard värden i databasen när man startar programmet
         public void CreateData()
         {
             if(_context.CaseStates.Find(1) == null)
@@ -118,31 +122,38 @@ namespace CaseManagement_App.Services
         #endregion
 
         #region GET
+
+        //GetAllCases hämtar alla Cases från databasen
         public IEnumerable<Cases> GetAllCases()
         {
             return _context.Cases.Include(x => x.CaseState).Include(x => x.User).ThenInclude(x => x.ContactInfo).Include(x => x.Admin).ToList();
         }
 
+        //GetCase hämtar enskilt Cases från databasen
         public Cases GetCase(int id)
         {
             return  _context.Cases.Include(x => x.CaseState).Include(x => x.User).ThenInclude(x => x.ContactInfo).Include(x => x.Admin).Where(x => x.Id == id).FirstOrDefault();
         }
 
+        //GetStates hämtar alla CaseStates från databasen
         public IEnumerable<CaseState> GetStates()
         {
             return _context.CaseStates.ToList();
         }
 
+        //GetState hämtar enskilt CaseState från databasen
         public CaseState GetState(int id)
         {
             return _context.CaseStates.Find(id);
         }
 
+        //Get_Statistics hämtar antalet Cases med ett specifikt CaseState
         public int Get_Statistics(int id)
         {
             return _context.Cases.Where(x => x.CaseStateId == id).Count();
         }
 
+        //GetLastCases hämtar de senaste 10 Cases om det finns så många annars returnerar den alla som finns
         public IEnumerable<Cases> GetLastCases()
         {
             List<Cases> _lastCasesList = new();

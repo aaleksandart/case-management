@@ -39,6 +39,7 @@ namespace CaseManagement_App.Views
             UpdateCase();
         }
 
+        //GetAllCases använder CaseService för att hämta och skriva ut alla Cases
         private void GetAllCases()
         {
             _caseList = caseService.GetAllCases();
@@ -48,6 +49,7 @@ namespace CaseManagement_App.Views
             }
         }
 
+        //GetStates använder CaseService för att hämta och skriva ut alla CaseStates förutom Created
         private void GetStates()
         {
             _caseStateList = caseService.GetStates();
@@ -62,6 +64,9 @@ namespace CaseManagement_App.Views
                     rBtnAddState2.Content = cs.Name;
             };
         }
+
+        //UpdateCase tar in och kontrollerar uppdaterad info om ett Case
+        //Använder CaseService för att sedan uppdatera valt Case
         private void UpdateCase()
         {
             string _updateHeader = updateHeader.Text;
@@ -78,20 +83,22 @@ namespace CaseManagement_App.Views
                 else
                     selectedState = caseService.GetState(3);
 
-                if (!string.IsNullOrEmpty(_updateHeader) || !string.IsNullOrEmpty(_updateDescription))
+                if (!string.IsNullOrEmpty(_updateHeader) && !string.IsNullOrEmpty(_updateDescription))
                 {
-                    if(!string.IsNullOrEmpty(_updateDescription))
-                    {
-                        caseService.UpdateCase(_updateHeader, _updateDescription, selectedState.Id, selectedCase.Id);
-                    }
-                    else
-                    {
-                        caseService.UpdateCase(_updateHeader, selectedCase.Descriptions, selectedState.Id, selectedCase.Id);
-                    }
+                    caseService.UpdateCase(_updateHeader, _updateDescription, selectedState.Id, selectedCase.Id);
                 }
                 else
                 {
-                    caseService.UpdateCase(selectedCase.Header, selectedCase.Descriptions, selectedState.Id, selectedCase.Id);
+                    if (!string.IsNullOrEmpty(_updateDescription))
+                    {
+                        caseService.UpdateCase(selectedCase.Header, _updateDescription, selectedState.Id, selectedCase.Id);
+                    }
+                    else if(!string.IsNullOrEmpty(_updateHeader))
+                    {
+                        caseService.UpdateCase(_updateHeader, selectedCase.Descriptions, selectedState.Id, selectedCase.Id);
+                    }
+                    else
+                        caseService.UpdateCase(selectedCase.Header, selectedCase.Descriptions, selectedState.Id, selectedCase.Id);
                 }
                 updateHeader.Text = "";
                 updateDescription.Text = "";
@@ -104,19 +111,5 @@ namespace CaseManagement_App.Views
                 processState.Text = "You must choose one case and one state.";
             }
         }
-
-        //private void btnAddState_Click(object sender, RoutedEventArgs e)
-        //{
-        //    lvUpdateCaseStateChoice.Items.Clear();
-        //    var item = (CaseState) lvUpdateCaseState.SelectedItem;
-        //    lvUpdateCaseStateChoice.Items.Add(item);
-        //}
-
-        //private void rBtnAddState_Click(object sender, RoutedEventArgs e)
-        //{
-        //    lvUpdateCaseStateChoice.Items.Clear();
-        //    var item = (CaseState)lvUpdateCaseState.SelectedItem;
-        //    lvUpdateCaseStateChoice.Items.Add(item);
-        //}
     }
 }

@@ -33,6 +33,7 @@ namespace CaseManagement_App.Views
             GetAdmins();
         }
 
+        //GetUsers använder UserService för att hämta och skriva ut alla Users
         private void GetUsers()
         {
             _userList = userService.GetAllUsers();
@@ -42,6 +43,7 @@ namespace CaseManagement_App.Views
             }
         }
 
+        //GetAdmins använder UserService för att hämta och skriva ut alla Admins
         private void GetAdmins()
         {
             _adminList = userService.GetAllAdmins();

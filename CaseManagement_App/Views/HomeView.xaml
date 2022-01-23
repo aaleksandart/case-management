@@ -24,7 +24,7 @@
         
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="320">
             <TextBlock Text="The 10 last created cases" Margin="10 0 0 5" FontSize="13" FontWeight="Medium"/>
-            <ListView x:Name="lvLastCreatedCases" Padding="15" Height="320" BorderBrush="Transparent">
+            <ListView x:Name="lvLastCreatedCases" Padding="15" Height="300" BorderBrush="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="2" Padding="10" Margin="0 2 0 5" BorderBrush="LightGray" Width="500">
