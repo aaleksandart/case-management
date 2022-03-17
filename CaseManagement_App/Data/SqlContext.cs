@@ -28,7 +28,7 @@ namespace CaseManagement_App.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\aleks\Desktop\Case_Management\CaseManagement_App\CaseManagement_App\Data\sql_case-management.mdf;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\aleks\Desktop\Case_Management\CaseManagement_App\CaseManagement_App\localdb_manager.mdf;Integrated Security=True;Connect Timeout=30");
         }
     }
 }

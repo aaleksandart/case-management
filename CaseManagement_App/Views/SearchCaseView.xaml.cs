@@ -50,12 +50,16 @@ namespace CaseManagement_App.Views
         private void GetCaseDetails()
         {
             var selectedItem = (Cases)lvCaseChoice.SelectedItem;
-            var item = caseService.GetCase(selectedItem.Id);
+            
+            if(selectedItem != null)
+            {
+                var item = caseService.GetCase(selectedItem.Id);
 
-            if(lvCaseChoice.SelectedValue != null)
-                lvCaseDetails.Items.Add(item);
-            else
-            { }
+                if (lvCaseChoice.SelectedValue != null)
+                    lvCaseDetails.Items.Add(item);
+                else
+                { }
+            }
         }
     }
 }
